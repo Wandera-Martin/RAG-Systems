@@ -1,15 +1,18 @@
 import os
 import json
+import sys
 from openai import OpenAI
+from math import exp
+import numpy as np
 from utility.env_manager import get_env_manager
-env_manager = get_env_manager()
-client = OpenAI(api_key=env_manager['openai_keys']['OPENAI_API_KEY'])
 
+env_manager = get_env_manager()
+client = OpenAI(api_key=env_manager["openai_keys"]["OPENAI_API_KEY"])
 
 
 def get_completion(
     messages: list[dict[str, str]],
-    model: str = env_manager['vectordb_keys']['VECTORDB_MODEL'],
+    model: str = env_manager["vectordb_keys"]["VECTORDB_MODEL"],
     max_tokens=500,
     temperature=0,
     stop=None,
@@ -47,12 +50,14 @@ def get_completion(
     return completion
 
 
-def file_reader(path: str, ) -> str:
+def file_reader(
+    path: str,
+) -> str:
     fname = os.path.join(path)
-    with open(fname, 'r') as f:
+    with open(fname, "r") as f:
         system_message = f.read()
     return system_message
-            
+
 
 def generate_test_data(prompt: str, context: str, num_test_output: str) -> str:
     """Return the classification of the hallucination.
@@ -64,11 +69,13 @@ def generate_test_data(prompt: str, context: str, num_test_output: str) -> str:
     API_RESPONSE = get_completion(
         [
             {
-                "role": "user", 
-                "content": prompt.replace("{context}", context).replace("{num_test_output}", num_test_output)
+                "role": "user",
+                "content": prompt.replace("{context}", context).replace(
+                    "{num_test_output}", num_test_output
+                ),
             }
         ],
-        model=env_manager['vectordb_keys']['VECTORDB_MODEL'],
+        model=env_manager["vectordb_keys"]["VECTORDB_MODEL"],
         logprobs=True,
         top_logprobs=1,
     )
@@ -83,13 +90,14 @@ def main(num_test_output: str):
     context = str(context_message)
     prompt = str(prompt_message)
     test_data = generate_test_data(prompt, context, num_test_output)
+
     def save_json(test_data) -> None:
         # Specify the file path
         file_path = "test-dataset/test-data.json"
         json_object = json.loads(test_data)
-        with open(file_path, 'w') as json_file:
+        with open(file_path, "w") as json_file:
             json.dump(json_object, json_file, indent=4)
-            
+
         print(f"JSON data has been saved to {file_path}")
 
     save_json(test_data)
@@ -101,4 +109,4 @@ def main(num_test_output: str):
 
 
 if __name__ == "__main__":
-    main("5") # n number of test data to generate
+    main("5")  # n number of test data to generate

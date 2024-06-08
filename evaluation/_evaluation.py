@@ -1,8 +1,4 @@
-import os
-import json
-import sys
 from openai import OpenAI
-from math import exp
 import numpy as np
 from utility.env_manager import get_env_manager
 from evaluation._data_generation import get_completion

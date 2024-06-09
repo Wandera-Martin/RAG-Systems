@@ -21,8 +21,8 @@ The goal of this project is to create an APE system that can:
 
 ## Technical Requirements
 
-- **Programming languages:** Python, JavaScript (for UI)
-- **Libraries and frameworks:** React and FastAPI
+- **Programming languages:** Python, Streeamlite (for UI)
+- **Libraries and frameworks:** Langchain
 - **LLM access:** Requires access to LLM APIs (e.g., GPT-4, GPT-3.5-Turbo) for prompt testing and application.
 
 

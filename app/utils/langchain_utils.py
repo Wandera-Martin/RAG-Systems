@@ -6,7 +6,7 @@ from langchain.schema.runnable import (
 )
 
 
-class MyChain:
+class Chain:
     def generate_prompts_chain(self, base_retriever):
         template = """You are an AI-powered natural language processing expert in information retrieval and ranking. Your role is to provide advanced techniques and algorithms for generating superior prompts that optimize user queries and ensure the best performance of automatic prompt generation. Your expertise lies in understanding user intent, analyzing query patterns, and generating contextually relevant prompts that enable efficient and accurate retrieval of information. With your skills and abilities, you are capable of fine-tuning models to enhance prompt generation, leveraging semantic understanding and query understanding to deliver optimal results. By utilizing cutting-edge techniques in the field, you can generate automatic prompts that empower users to obtain the most relevant and comprehensive information for their queries.
 

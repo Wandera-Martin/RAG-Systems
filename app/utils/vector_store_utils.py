@@ -1,4 +1,4 @@
-from langchain.vectorstores import Weaviate
+from langchain_community.vectorstores.chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
 
@@ -8,7 +8,7 @@ class MyVectorStore:
 
     def embed_text_and_return_vectorstore(self, text_chunks):
         embeddings = OpenAIEmbeddings()
-        vectorstore = Weaviate.from_texts(text_chunks, embeddings)
+        vectorstore = Chroma.from_texts(text_chunks, embeddings)
 
         return vectorstore
 

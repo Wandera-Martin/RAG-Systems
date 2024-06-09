@@ -5,12 +5,12 @@ from htmlTemplates import css, bot_template
 from utils.pdf_utils import MyPDF
 from utils.text_splitter_utils import MyTextSplitter
 from utils.vector_store_utils import MyVectorStore
-from utils.langchain_utils import MyChain
+from utils.langchain_utils import Chain
 import json
 
 
 def get_conversation_chain(retriever):
-    my_lang_chain = MyChain()
+    my_lang_chain = Chain()
     return my_lang_chain.generate_prompts_chain(base_retriever=retriever)
 
 

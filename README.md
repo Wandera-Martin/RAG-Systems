@@ -24,3 +24,51 @@ The goal of this project is to create an APE system that can:
 - **Programming languages:** Python, JavaScript (for UI)
 - **Libraries and frameworks:** React and FastAPI
 - **LLM access:** Requires access to LLM APIs (e.g., GPT-4, GPT-3.5-Turbo) for prompt testing and application.
+
+
+## Getting Started
+
+1. Clone this repository:
+
+```sh
+git clone https://github.com/Wandera-Martin/RAG-Systems
+cd RAG-Systems
+```
+
+2. Setup environment variables on `.env`:
+
+(create .env file in the [Title](Makefile)root directory)
+
+```bash
+#################
+# Development env
+#################
+
+OPENAI_API_KEY=""
+VECTORDB_MODEL="gpt-3.5-turbo"
+```
+
+
+# Installation
+
+**Run**
+
+```bash
+# create virtual environment
+python3 -m venv venv
+
+# activate
+source venv/bin/activate
+
+# install requirements
+pip install -r requirements.txt
+
+```
+
+## Contribution Guidelines
+We welcome contributions from the community. Feel free to open issues, submit pull requests, and collaborate with us to improve the toolkit.
+
+## License
+This project is licensed under the [MIT License](LICENSE.md).
+
+Let's optimize language models together! 🚀
